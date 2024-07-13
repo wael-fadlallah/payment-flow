@@ -1,0 +1,9 @@
+{
+  "name": "payflow-web-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/payflow-web-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["payflow-web"],
+  "// targets": "to see all targets run: nx show project payflow-web-e2e --web",
+  "targets": {}
+}
