@@ -1,3 +1,6 @@
+import { ThemeProvider } from '@mui/material';
+import { StyledEngineProvider } from '@mui/material/styles';
+import theme from '../theme';
 import './global.css';
 
 export const metadata = {
@@ -16,7 +19,11 @@ export default function RootLayout({
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider theme={theme}>
+          <StyledEngineProvider injectFirst>{children}</StyledEngineProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

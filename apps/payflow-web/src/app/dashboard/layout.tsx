@@ -1,7 +1,8 @@
 'use client';
-import { Box } from '@mui/material';
-import SideMenu from './components/SideMenu';
+import { Box, CssBaseline } from '@mui/material';
+import SideMenu from './components/sideMenu';
 import style from './style';
+import Header from './components/header';
 
 export default function DashboardLayout({
   children,
@@ -9,10 +10,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <Box>
+      <CssBaseline />
+      <Header />
       {/* TODO: generic dashboard UI */}
       <SideMenu width={style.sideMenuWidth} />
-      <Box sx={style.dasboardContentWraper}>{children}</Box>
-    </>
+      <Box style={style.dasboardContentWraper}>{children}</Box>
+    </Box>
   );
 }

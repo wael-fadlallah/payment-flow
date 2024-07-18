@@ -4,6 +4,7 @@ export default {
   sideMenuWidth,
   dasboardContentWraper: {
     marginLeft: `${sideMenuWidth}px`,
-    padding: 2,
+    padding: 16,
+    marginTop: 64,
   },
 };

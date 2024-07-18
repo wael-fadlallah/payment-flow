@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   Box,
-  Drawer,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import Drawer from '@mui/material/Drawer';
 
 const SideMenu = ({ width = 250 }: { width?: number }) => {
   const router = useRouter();
@@ -17,8 +17,15 @@ const SideMenu = ({ width = 250 }: { width?: number }) => {
   };
 
   return (
-    <Drawer variant="permanent">
-      <Box sx={{ width }} role="presentation">
+    <Drawer
+      variant="permanent"
+      anchor="left"
+      sx={{
+        flexShrink: 0,
+        [`& .MuiDrawer-paper`]: { width, boxSizing: 'border-box' },
+      }}
+    >
+      <Box sx={{ marginTop: '64px' }} role="presentation">
         <List>
           <ListItem>
             <ListItemButton onClick={() => navigate('/dashboard/employees')}>
