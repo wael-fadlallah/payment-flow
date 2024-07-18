@@ -29,12 +29,12 @@ const SideMenu = ({ width = 250 }: { width?: number }) => {
         <List>
           <ListItem>
             <ListItemButton onClick={() => navigate('/dashboard/employees')}>
-              <ListItemText primary="employees" />
+              <ListItemText primary="Employees" />
             </ListItemButton>
           </ListItem>
           <ListItem>
             <ListItemButton onClick={() => navigate('/dashboard/salaries')}>
-              <ListItemText primary="salaries" />
+              <ListItemText primary="Salaries" />
             </ListItemButton>
           </ListItem>
         </List>

@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Toolbar, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,12 +10,22 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { employees, Employee } from '../../../types';
+import { AddCircleOutline } from '@mui/icons-material';
+import { employees, Employee } from '../../../core/types';
+import { Dialog } from '../../../core/components';
 
 export default function Employees() {
   return (
     <Box>
+      <Box className="my-4" />
       <TableContainer component={Paper}>
+        <Toolbar className="justify-between">
+          <Typography variant="h4">Employees</Typography>
+          <IconButton>
+            <AddCircleOutline className="mx-1" />
+            Create
+          </IconButton>
+        </Toolbar>
         <Table>
           <TableHead>
             <TableRow>
@@ -49,6 +60,13 @@ export default function Employees() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Dialog
+        title={'Delete employee'}
+        text={'Are you sure you want to delete this employee?'}
+        open={false}
+        onClose={function (): void {}}
+        onPrimaryButtonPress={function (): void {}}
+      />
     </Box>
   );
 }
