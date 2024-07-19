@@ -6,6 +6,25 @@ export type Employee = {
   salaryAllowances: number;
 };
 
+export type AuthUser = {
+  username: string;
+  password: string;
+  email: string;
+  accessToken: string;
+};
+
+export type StateType = {
+  auth: AuthUser;
+  employee: Employee[];
+  loading: boolean;
+};
+
+export type ActionType = 'SET_AUTH_USER' | 'CLEAR_AUTH_USER';
+
+export type Action = {
+  type: ActionType;
+  payload?: any;
+};
 // Create an array of employees
 export const employees: Employee[] = [
   {

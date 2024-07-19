@@ -1,7 +1,5 @@
-import { ThemeProvider } from '@mui/material';
-import { StyledEngineProvider } from '@mui/material/styles';
-import theme from '../theme';
 import './global.css';
+import Providers from './providers';
 
 export const metadata = {
   title: 'Welcome to payflow',
@@ -20,9 +18,7 @@ export default function RootLayout({
         <meta name="description" content={metadata.description} />
       </head>
       <body>
-        <ThemeProvider theme={theme}>
-          <StyledEngineProvider injectFirst>{children}</StyledEngineProvider>
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
