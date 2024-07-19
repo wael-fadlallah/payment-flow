@@ -1,13 +1,18 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField, Button, FormControl, Typography, Box } from '@mui/material';
 import style from '../style';
 import { useRouter } from 'next/navigation';
+import useAPI from '../../../core/network';
+import { PayflowContext } from 'apps/payflow-web/src/contexts/PayflowContextProvider';
+import { setLoadingState } from 'apps/payflow-web/src/contexts/actions';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
+  const api = useAPI();
+  const { dispatch, state } = useContext(PayflowContext);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -16,14 +21,23 @@ const LoginPage = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
-  const handleSubmit = () => {
-    router.replace('/dashboard');
+  const handleLogin = async () => {
+    dispatch(setLoadingState(true));
+    try {
+      dispatch(setLoadingState(true));
+      const res = await api.post('/login', { email, password });
+      dispatch(setLoadingState(false));
+      localStorage.setItem('accessToken', res.accessToken);
+      router.replace('/dashboard');
+    } catch (err) {
+      dispatch(setLoadingState(false));
+      console.error(err);
+    }
   };
 
-  function onRegisterClicked() {
+  const onRegisterClicked = () => {
     router.push('/auth/register');
-  }
+  };
 
   return (
     <Box>
@@ -50,7 +64,7 @@ const LoginPage = () => {
           variant="contained"
           color="primary"
           size="large"
-          onClick={handleSubmit}
+          onClick={handleLogin}
         >
           Login
         </Button>

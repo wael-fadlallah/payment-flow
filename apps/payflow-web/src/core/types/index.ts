@@ -19,7 +19,12 @@ export type StateType = {
   loading: boolean;
 };
 
-export type ActionType = 'SET_AUTH_USER' | 'CLEAR_AUTH_USER';
+export enum ActionType {
+  SET_AUTH_USER = 'SET_AUTH_USER',
+  CLEAR_AUTH_USER = 'CLEAR_AUTH_USER',
+  SET_EMPLOYEES = 'SET_EMPLOYEES',
+  SET_LOADING_STATE = 'SET_LOADING_STATE',
+}
 
 export type Action = {
   type: ActionType;

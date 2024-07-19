@@ -1,17 +1,20 @@
-import { AuthUser } from '../core/types';
+import { Action, ActionType, AuthUser, Employee } from '../core/types';
 
-enum ActionType {
-  SET_AUTH_USER = 'SET_AUTH_USER',
-  CLEAR_AUTH_USER = 'CLEAR_AUTH_USER',
-}
+export const setAuthUser = (user: AuthUser): Action => ({
+  type: ActionType.SET_AUTH_USER,
+  payload: user,
+});
 
-interface SetAuthUserAction {
-  type: ActionType.SET_AUTH_USER;
-  payload: AuthUser;
-}
+export const clearAuthUser = (): Action => ({
+  type: ActionType.CLEAR_AUTH_USER,
+});
 
-interface ClearAuthUserAction {
-  type: ActionType.CLEAR_AUTH_USER;
-}
+export const setLoadingState = (isLoading: boolean): Action => ({
+  type: ActionType.SET_LOADING_STATE,
+  payload: isLoading,
+});
 
-export type Action = SetAuthUserAction | ClearAuthUserAction;
+export const setEmployees = (employees: Employee[]): Action => ({
+  type: ActionType.SET_EMPLOYEES,
+  payload: employees,
+});

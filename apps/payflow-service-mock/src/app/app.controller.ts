@@ -23,9 +23,6 @@ export class AppController {
 
   @Get('/employees')
   getEmployees(@Headers('Authorization') accessToken: string) {
-    if (!accessToken) {
-      return { error: 'Access token is missing' };
-    }
     return employeeData;
   }
 }
