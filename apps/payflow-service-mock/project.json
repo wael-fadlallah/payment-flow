@@ -1,0 +1,24 @@
+{
+  "name": "payflow-service-mock",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/payflow-service-mock/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "payflow-service-mock:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "payflow-service-mock:build:development"
+        },
+        "production": {
+          "buildTarget": "payflow-service-mock:build:production"
+        }
+      }
+    }
+  }
+}
